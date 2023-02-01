@@ -84,3 +84,68 @@ public class Kom_Aufgabe {
 
 	}
 }
+///////////////////////////////////////
+
+
+import java.util.Scanner;
+
+public class IntToHex {
+	public static void main(String[] args) {
+		Scanner eingabe = new Scanner(System.in);
+		int hans = eingabe.nextInt();
+		String Peter = "";
+		String niklas = "";
+		int christoph = 0;
+		String juergen = "";
+
+
+		while (hans != 0) {
+			if (hans % 2 == 0) {
+				Peter = "0" + Peter;
+			} else {
+				Peter = "1" + Peter;
+			}
+
+			hans = hans / 2;
+			christoph++;
+			if (christoph == 4) {
+				Peter = " " + Peter;
+				christoph = 0;
+			}
+		}
+		
+		String[] split = Peter.split(" ");
+
+		for (int x = 0; x < split.length; x++) {
+			juergen = split[x];
+			if (juergen.equals("")) {
+				continue;
+			}
+			
+			int dezimalZahl = 0;
+			int restWert = 0;
+			int anzahlVerschiebung = 0;
+			int numberInt = Integer.parseInt(juergen);
+
+			while (numberInt != 0) {
+				restWert = numberInt % 10;
+				dezimalZahl = dezimalZahl + (int) (restWert * (Math.pow(2, anzahlVerschiebung)));
+				numberInt = numberInt / 10;
+				anzahlVerschiebung = anzahlVerschiebung + 1;
+			}
+			
+			
+
+			if (dezimalZahl >= 10) {
+				char c = (char) (((int)('A') -10)+ dezimalZahl);
+				niklas += c;	
+			} else {
+				niklas += dezimalZahl;
+			}
+
+		}
+
+		System.out.println(niklas);
+	}
+
+}
